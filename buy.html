@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+
+
+
+        .container {
+            background-color: transparent;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        .credit-card-icons {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .credit-card-icon {
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .credit-card-icon:hover {
+            transform: scale(1.1); 
+        }
+
+
+
+
+
+
+
+
+
+
+
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-image:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(log1.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
+           
+            
+        }
+
+html,body{
+
+height: 100%;
+margin: 0;
+padding: 0;
+
+
+
+}
+
+
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            position: relative;
+        }
+
+        .navbar .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .navbar .icons {
+            display: flex;
+            align-items: center;
+        }
+
+        
+        .navbar .shopping-icon {
+            font-size: 1.5em;
+            margin-left: 15px;
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+            color: white; 
+        }
+
+        .navbar .shopping-icon:hover {
+            transform: scale(1.2); 
+            
+        }
+
+        
+        .navbar .search-bar {
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-left: 15px;
+        }
+
+        .navbar .search-bar input {
+            width: 0;
+            padding: 5px 10px;
+            opacity: 0;
+            border-radius: 25px; 
+            transition: width 0.5s ease, opacity 0.5s ease;
+            position: absolute;
+            left: -210px; 
+            border: 1px solid #000000;
+        }
+
+        .navbar .search-bar:hover input {
+            width: 200px;
+            opacity: 1;
+            border: none;
+        }
+
+        
+        .navbar .search-icon {
+            font-size: 1.5em;
+            color: #000; 
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        
+
+        .navbar .search-icon:hover {
+            transform: scale(1.2); 
+            
+        }
+
+        
+        .navbar .menu-icon {
+            font-size: 1.5em;
+            margin-left: 15px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+       
+        .navbar .menu-icon div {
+            width: 20px;
+            height: 3px;
+            background-color: white;
+            opacity: 1; 
+            transform: scaleX(1);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        
+
+    
+        
+        .navbar .menu-icon:hover div {
+            transform: scaleX(1.2); 
+        }
+
+      
+        .navbar .menu-icon div:nth-child(1) {
+            transition-delay: 0s;
+        }
+
+        .navbar .menu-icon div:nth-child(2) {
+            transition-delay: 0.1s;
+        }
+
+        .navbar .menu-icon div:nth-child(3) {
+            transition-delay: 0.2s;
+        }
+
+       
+        .menu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            border-radius: 8px;
+            width: 150px;
+            box-shadow: 0 2px 10px white;
+        }
+
+        .menu.active {
+            display: flex;
+        }
+
+        .menu a {
+            padding: 10px;
+            text-decoration: none;
+            color: white;
+            font-size: 1em;
+            border-bottom: 1px solid #ffffff;
+        }
+
+        .menu a:last-child {
+            border-bottom: none;
+        }
+
+        .menu a:hover {
+            background-color: #9c779c;
+        }
+
+        
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+
+
+
+
+</head>
+<body text="white">
+
+
+    <div class="navbar">
+       
+        <div style="color: white;" class="logo">FASHION</div>
+
+       
+        <div class="icons">
+        
+            <div class="search-bar">
+                <span class="search-icon"><img src="ico.png" width="26" height="26"></span>
+                <input type="text" id="search" placeholder="Search...">
+            </div>
+            
+            <span class="shopping-icon"  onclick="window.location.href='shop.html';"><img src="ico1.png" width="30" height="30"></span>
+            
+            <span class="menu-icon" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </span>
+        </div>
+    </div>
+
+    
+    <div class="menu" id="menu">
+        <a href="#home" onclick="window.location.href='home.html';">Home</a>
+        <a href="#shop"  onclick="window.location.href='shop.html';">Shop</a>
+        <a href="#blog" onclick="window.location.href='blog.html';">Blog</a>
+        <a href="#about" onclick="window.location.href='about.html';">About</a>
+        <a href="#contact" onclick="window.location.href='contact.html';">Contact</a>
+    </div>
+
+    <script>
+        
+        function toggleMenu() {
+            var menu = document.getElementById("menu");
+            menu.classList.toggle("active");
+        }
+
+        
+        document.getElementById('search').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                var query = e.target.value;
+                var elements = document.body.innerHTML;
+
+                
+                elements = elements.replace(/<mark class="highlight">(.*?)<\/mark>/g, '$1');
+
+                
+                var regex = new RegExp(query, 'gi');
+                elements = elements.replace(regex, function (match) {
+return `<mark class="highlight">${match}</mark>`;
+                });
+
+                document.body.innerHTML = elements;
+
+                
+                var firstMatch = document.querySelector('.highlight');
+                if (firstMatch) {
+                    firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        });
+    </script>
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<center>
+    <p> <font size="5" face="Arial">Payment methods:</font></p>
+<div class="container">
+    <div class="credit-card-icons">
+        
+       
+        <img src="visa.png" alt="Visa" class="credit-card-icon" onclick="window.location.href='https://usa.visa.com/pay-with-visa/cards/visa-credit-cards.html';">
+     
+        <img src="master4.webp" alt="MasterCard" class="credit-card-icon" onclick="window.location.href='https://www.mastercard.us/en-us.html';">
+       
+        <img src="PayPal_.svg" alt="Paypal" class="credit-card-icon" onclick="window.location.href='https://www.paypal.com/eg/home';">
+        
+        <img src="bin.png" alt="Binance" class="credit-card-icon" onclick="window.location.href='https://www.binance.com/ar';">
+    </div>
+
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<p><font size="2" face="Arial">&copy; 2024 Online Store. All rights reserved Designed by.soviet group</p></font> 
+<br>
+</center>
+</body>
+</html>

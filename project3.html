@@ -1,0 +1,67 @@
+<body text="white">
+
+    
+
+    <div class="navbar">
+        <!-- الشعار -->
+        <div style="color: white;" class="logo">FASHION</div>
+
+        <!-- الأيقونات (حقيبة التسوق والبحث والقائمة) -->
+        <div class="icons">
+            <!-- أيقونة البحث -->
+            <div class="search-bar">
+                <span class="search-icon">&#128269;</span>
+                <input type="text" id="search" placeholder="Search...">
+            </div>
+            <!-- أيقونة حقيبة التسوق -->
+            <span class="shopping-icon">&#128717;</span>
+            <!-- أيقونة القائمة بأشرطة متحركة -->
+            <span class="menu-icon" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </span>
+        </div>
+    </div>
+
+    <!-- القائمة المنسدلة -->
+    <div class="menu" id="menu">
+        <a href="#home">Home</a>
+        <a href="#shop"  onclick="window.location.href='shop.html';">Shop</a>
+        <a href="#blog">Blog</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <script>
+        // وظيفة لتبديل عرض القائمة
+        function toggleMenu() {
+            var menu = document.getElementById("menu");
+            menu.classList.toggle("active");
+        }
+
+        // وظيفة للبحث والانتقال إلى الكلمة المحددة
+        document.getElementById('search').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                var query = e.target.value;
+                var elements = document.body.innerHTML;
+
+                // إزالة التمييز السابق
+                elements = elements.replace(/<mark class="highlight">(.*?)<\/mark>/g, '$1');
+
+                // تمييز الكلمة المحددة
+                var regex = new RegExp(query, 'gi');
+                elements = elements.replace(regex, function (match) {
+return `<mark class="highlight">${match}</mark>`;
+                });
+
+                document.body.innerHTML = elements;
+
+                // الانتقال إلى أول كلمة مميزة
+                var firstMatch = document.querySelector('.highlight');
+                if (firstMatch) {
+                    firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        });
+    </script>

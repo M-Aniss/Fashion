@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>page shopping</title>
+    <link rel="stylesheet" href="project3.css">
+    <style>
+
+.container {
+            position: relative;
+            width: 50%;
+        }
+
+        .image {
+            display: block;
+            width: 100%;
+            height: auto;
+            
+        }
+
+
+        .button {
+            position: absolute;
+            top: 70%;
+            left: 28%;
+            transform: translate(-50%, -50%);
+            background-color: transparent;
+            color: white;
+            text-align: center;
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 18px;
+            
+            border: dotted;
+           
+        }
+
+        .button:hover {
+            border: 2px;
+            
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-image:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(log1.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
+           
+            
+        }
+
+html,body{
+
+height: 100%;
+margin: 0;
+padding: 0;
+
+
+
+}
+
+
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            position: relative;
+        }
+
+        .navbar .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .navbar .icons {
+            display: flex;
+            align-items: center;
+        }
+
+       
+        .navbar .shopping-icon {
+            font-size: 1.5em;
+            margin-left: 15px;
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+            color: white; 
+        }
+
+        .navbar .shopping-icon:hover {
+            transform: scale(1.2); 
+            
+        }
+
+        
+        .navbar .search-bar {
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-left: 15px;
+        }
+
+        .navbar .search-bar input {
+            width: 0;
+            padding: 5px 10px;
+            opacity: 0;
+            border-radius: 25px; 
+            transition: width 0.5s ease, opacity 0.5s ease;
+            position: absolute;
+            left: -210px; 
+            border: 1px solid #000000;
+        }
+
+        .navbar .search-bar:hover input {
+            width: 200px;
+            opacity: 1;
+        }
+
+        
+        .navbar .search-icon {
+            font-size: 1.5em;
+            color: #000; 
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        
+
+        .navbar .search-icon:hover {
+            transform: scale(1.2);
+            color: #007bff; 
+        }
+
+        
+        .navbar .menu-icon {
+            font-size: 1.5em;
+            margin-left: 15px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        
+        .navbar .menu-icon div {
+            width: 20px;
+            height: 3px;
+            background-color: white;
+            opacity: 1; 
+            transform: scaleX(1); 
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        
+
+    
+        
+        .navbar .menu-icon:hover div {
+            transform: scaleX(1.2); 
+        }
+
+        
+        .navbar .menu-icon div:nth-child(1) {
+            transition-delay: 0s;
+        }
+
+        .navbar .menu-icon div:nth-child(2) {
+            transition-delay: 0.1s;
+        }
+
+        .navbar .menu-icon div:nth-child(3) {
+            transition-delay: 0.2s;
+        }
+
+        
+        .menu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            border-radius: 8px;
+            width: 150px;
+            box-shadow: 0 2px 10px white;
+        }
+
+        .menu.active {
+            display: flex;
+        }
+
+        .menu a {
+            padding: 10px;
+            text-decoration: none;
+            color: white;
+            font-size: 1em;
+            border-bottom: 1px solid #ffffff;
+        }
+
+        .menu a:last-child {
+            border-bottom: none;
+        }
+
+        .menu a:hover {
+            background-color: #9c779c;
+        }
+
+        
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body text="white">
+
+    
+
+    <div class="navbar">
+       
+        <div style="color: white;" class="logo">FASHION</div>
+
+        
+        <div class="icons">
+            
+            <div class="search-bar">
+                <span class="search-icon" ><img src="ico.png" width="26" height="26"></span>
+                <input type="text" id="search" placeholder="Search...">
+            </div>
+            
+            <span class="shopping-icon" onclick="window.location.href='shop.html';"><img src="ico1.png" width="30" height="30"></span>
+            
+            <span class="menu-icon" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </span>
+        </div>
+    </div>
+
+
+    <div class="menu" id="menu">
+        <a href="#home" onclick="window.location.href='home.html';">Home</a>
+        <a href="#shop"  onclick="window.location.href='shop.html';">Shop</a>
+        <a href="#blog" onclick="window.location.href='blog.html';">Blog</a>
+        <a href="#about" onclick="window.location.href='about.html';">About</a>
+        <a href="#contact" onclick="window.location.href='contact.html';">Contact</a>
+    </div>
+
+    <script>
+        
+        function toggleMenu() {
+            var menu = document.getElementById("menu");
+            menu.classList.toggle("active");
+        }
+
+        
+        document.getElementById('search').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                var query = e.target.value;
+                var elements = document.body.innerHTML;
+
+                
+                elements = elements.replace(/<mark class="highlight">(.*?)<\/mark>/g, '$1');
+
+               
+                var regex = new RegExp(query, 'gi');
+                elements = elements.replace(regex, function (match) {
+return `<mark class="highlight">${match}</mark>`;
+                });
+
+                document.body.innerHTML = elements;
+
+               
+                var firstMatch = document.querySelector('.highlight');
+                if (firstMatch) {
+                    firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        });
+    </script>
+
+<br><br><br>
+
+    <center>
+        <div class="container">
+            <img src="hop1.jpg" alt="صورة" class="image">
+           
+            <a href="shop.html" class="button">SHOP NOW</a>
+        </div><br><br><br><br>
+        <div class="container">
+            <img src="hop2.jpg" alt="صورة" class="image">
+           
+            <a href="shop.html" class="button">SHOP NOW</a>
+        </div>
+
+
+
+
+
+        <footer><br><br><br><br><br>
+        
+            <p><font size="2" face="Arial">&copy; 2024 Online Store. All rights reserved Designed by.soviet group</p></font> 
+           <br>
+        </footer>
+</center>
+</body>
+</html>

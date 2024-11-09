@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+ .social-icons {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 400px;
+            margin: 20px auto;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: scale(1.1); 
+        }
+    
+
+
+
+
+
+
+
+
+
+
+
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-image:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)), url(log1.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            background-attachment: fixed;
+           
+            
+        }
+
+html,body{
+
+height: 100%;
+margin: 0;
+padding: 0;
+
+
+
+}
+
+
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            position: relative;
+        }
+
+        .navbar .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .navbar .icons {
+            display: flex;
+            align-items: center;
+        }
+
+        
+        .navbar .shopping-icon {
+            font-size: 1.5em;
+            margin-left: 15px;
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+            color: white; 
+        }
+
+        .navbar .shopping-icon:hover {
+            transform: scale(1.2); 
+            
+        }
+
+       
+        .navbar .search-bar {
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-left: 15px;
+        }
+
+        .navbar .search-bar input {
+            width: 0;
+            padding: 5px 10px;
+            opacity: 0;
+            border-radius: 25px; 
+            transition: width 0.5s ease, opacity 0.5s ease;
+            position: absolute;
+            left: -210px; 
+            border: 1px solid #000000;
+        }
+
+        .navbar .search-bar:hover input {
+            width: 200px;
+            opacity: 1;
+            border: none;
+        }
+
+        
+        .navbar .search-icon {
+            font-size: 1.5em;
+            color: #000; 
+            cursor: pointer;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        
+
+        .navbar .search-icon:hover {
+            transform: scale(1.2); 
+            
+        }
+
+        
+        .navbar .menu-icon {
+            font-size: 1.5em;
+            margin-left: 15px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        
+        .navbar .menu-icon div {
+            width: 20px;
+            height: 3px;
+            background-color: white;
+            opacity: 1; 
+            transform: scaleX(1); 
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        
+
+    
+        
+        .navbar .menu-icon:hover div {
+            transform: scaleX(1.2); 
+        }
+
+        .navbar .menu-icon div:nth-child(1) {
+            transition-delay: 0s;
+        }
+
+        .navbar .menu-icon div:nth-child(2) {
+            transition-delay: 0.1s;
+        }
+
+        .navbar .menu-icon div:nth-child(3) {
+            transition-delay: 0.2s;
+        }
+
+        
+        .menu {
+            display: none;
+            flex-direction: column;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            border-radius: 8px;
+            width: 150px;
+            box-shadow: 0 2px 10px white;
+        }
+
+        .menu.active {
+            display: flex;
+        }
+
+        .menu a {
+            padding: 10px;
+            text-decoration: none;
+            color: white;
+            font-size: 1em;
+            border-bottom: 1px solid #ffffff;
+        }
+
+        .menu a:last-child {
+            border-bottom: none;
+        }
+
+        .menu a:hover {
+            background-color: #9c779c;
+        }
+
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+
+
+
+
+</head>
+<body text="white">
+
+
+    <div class="navbar">
+        
+        <div style="color: white;" class="logo">FASHION</div>
+
+        
+        <div class="icons">
+            
+            <div class="search-bar">
+                <span class="search-icon"><img src="ico.png" width="26" height="26"></span>
+                <input type="text" id="search" placeholder="Search...">
+            </div>
+            
+            <span class="shopping-icon"  onclick="window.location.href='shop.html';"><img src="ico1.png" width="30" height="30"></span>
+            
+            <span class="menu-icon" onclick="toggleMenu()">
+                <div></div>
+                <div></div>
+                <div></div>
+            </span>
+        </div>
+    </div>
+
+    
+    <div class="menu" id="menu">
+        <a href="#home" onclick="window.location.href='home.html';">Home</a>
+        <a href="#shop"  onclick="window.location.href='shop.html';">Shop</a>
+        <a href="#blog" onclick="window.location.href='blog.html';">Blog</a>
+        <a href="#about" onclick="window.location.href='about.html';">About</a>
+        <a href="#contact" onclick="window.location.href='contact.html';">Contact</a>
+    </div>
+
+    <script>
+        
+        function toggleMenu() {
+            var menu = document.getElementById("menu");
+            menu.classList.toggle("active");
+        }
+
+        
+        document.getElementById('search').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                var query = e.target.value;
+                var elements = document.body.innerHTML;
+
+                
+                elements = elements.replace(/<mark class="highlight">(.*?)<\/mark>/g, '$1');
+
+                
+                var regex = new RegExp(query, 'gi');
+                elements = elements.replace(regex, function (match) {
+return `<mark class="highlight">${match}</mark>`;
+                });
+
+                document.body.innerHTML = elements;
+
+                
+                var firstMatch = document.querySelector('.highlight');
+                if (firstMatch) {
+                    firstMatch.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        });
+    </script>
+
+
+
+<center>
+
+    <br><br><br><br><br><br><br><br><br><br>
+    <p><font size="4" face="georgia"><strong>Address:</strong></font></p><p> <font size="3" face="georgia">Sana'a Hda'a street near to Alazani clothes</font></p><br>
+    <p><font size="4" face="georgia"><strong>Phone</strong></font></p><p> <font size="3" face="Arial">+967 775-813-632</font></p><br>
+    <p><font size="4" face="georgia"><strong>Hours</strong></font></p><p> <font size="3" face="Arial">10:00 - 12:00</font></p><br>
+    
+    <br><br>
+    <p><font size="4" face="georgia"><strong>Follow Us:</strong></font></p>
+    </center>
+
+
+
+
+
+
+
+
+
+
+
+<div class="social-icons">
+    
+    <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" onclick="window.location.href='www.facebook.com';">
+        <path fill="#1877F2" d="M22.675 0H1.325C.593 0 0 .593 0 1.325V22.676C0 23.407.593 24 1.325 24H12.82V14.706H9.692V11.084H12.82V8.413C12.82 5.724 14.514 4.294 16.858 4.294C18.126 4.294 19.234 4.383 19.516 4.413V7.615H18.165C16.852 7.615 16.78 8.278 16.78 9.15V11.083H19.552L19.226 14.705H16.78V24H22.675C23.407 24 24 23.407 24 22.676V1.325C24 .593 23.407 0 22.675 0Z"/>
+        <path fill="#FFF" d="M19.226 14.705L19.552 11.083H16.78V9.15C16.78 8.278 16.852 7.615 18.165 7.615H19.516V4.413C19.234 4.383 18.126 4.294 16.858 4.294C14.514 4.294 12.82 5.724 12.82 8.413V11.084H9.692V14.706H12.82V24H16.78V14.705H19.226Z"/>
+    </svg>
+
+    
+    <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" onclick="window.location.href='www.twitter.com';">
+        <path fill="#1DA1F2" d="M23.447 4.794C22.671 5.172 21.823 5.399 20.93 5.471C21.83 4.953 22.539 4.141 22.86 3.135C21.997 3.605 21.025 3.915 19.999 4.057C19.155 3.18 17.944 2.677 16.604 2.677C14.159 2.677 12.201 4.635 12.201 7.079C12.201 7.47 12.242 7.851 12.327 8.214C8.088 8.007 4.29 6.13 1.925 3.148C1.521 3.798 1.292 4.543 1.292 5.336C1.292 7.009 2.208 8.458 3.554 9.143C2.856 9.13 2.183 8.93 1.582 8.584V8.63C1.582 10.946 3.201 12.887 5.289 13.329C4.85 13.44 4.391 13.49 3.92 13.49C3.586 13.49 3.26 13.465 2.944 13.402C3.599 15.319 5.306 16.681 7.288 16.714C5.654 17.944 3.56 18.653 1.333 18.653C0.883 18.653 0.439 18.637 0 18.594C2.012 19.937 4.393 20.704 6.921 20.704C16.599 20.704 21.582 13.652 21.582 7.719C21.582 7.509 21.578 7.299 21.568 7.093C22.433 6.414 23.17 5.57 23.747 4.617C22.905 5.14 22.008 5.505 21.064 5.691C22.013 5.086 22.766 4.273 23.447 4.794Z"/>
+    </svg>
+
+    
+    <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" onclick="window.location.href='www.instagram.com';">
+        <path fill="#E4405F" d="M16 2H8C4.686 2 2 4.686 2 8V16C2 19.314 4.686 22 8 22H16C19.314 22 22 19.314 22 16V8C22 4.686 19.314 2 16 2ZM20 16C20 18.206 18.206 20 16 20H8C5.794 20 4 18.206 4 16V8C4 5.794 5.794 4 8 4H16C18.206 4 20 5.794 20 8V16Z"/>
+        <path fill="#E4405F" d="M12 7C9.243 7 7 9.243 7 12C7 14.757 9.243 17 12 17C14.757 17 17 14.757 17 12C17 9.243 14.757 7 12 7ZM12 15C10.346 15 9 13.654 9 12C9 10.346 10.346 9 12 9C13.654 9 15 10.346 15 12C15 13.654 13.654 15 12 15Z"/>
+        <circle fill="#E4405F" cx="18.406" cy="5.594" r="1.44"/>
+    </svg>
+
+    
+    <svg class="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" onclick="window.location.href='www.youtube.com';">
+        <path fill="#FF0000" d="M23.498 6.186C23.317 5.183 22.677 4.392 21.861 4.035C20.9 3.651 12 3.651 12 3.651C12 3.651 3.1 3.651 2.139 4.035C1.323 4.392 .683 5.183 .502 6.186C.152 8.107 .152 12 .152 12C.152 12 .152 15.893 .502 17.814C.683 18.817 1.323 19.608 2.139 19.965C3.1 20.349 12 20.349 12 20.349C12 20.349 20.9 20.349 21.861 19.965C22.677 19.608 23.317 18.817 23.498 17.814C23.848 15.893 23.848 12 23.848 12C23.848 12 23.848 8.107 23.498 6.186ZM9.847 15.59V8.41L16.308 12L9.847 15.59Z"/>
+    </svg>
+
+
+
+</div>
+
+
+
+
+<center>
+
+<p><font size="2" face="Arial">&copy; <strong> 2024 Online Store. All rights reserved Designed by.soviet group</strong></p></font>
+      <br><br>
+
+    </center>
+
+
+
+
+
+
+
+</body>
+</html>
